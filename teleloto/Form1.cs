@@ -12,6 +12,12 @@ namespace teleloto
 {
     public partial class Form1 : Form
     {
+        int[] melyni = new int[5];
+        int[] juodi = new int[5];
+        int[] raudoni = new int[5];
+        int[] geltoni = new int[5];
+        int[] zali = new int[5];
+
         public Form1()
         {
             InitializeComponent();
@@ -19,11 +25,11 @@ namespace teleloto
 
         private void buttonGeneruoti_Click(object sender, EventArgs e)
         {
-            int[] melyni = Atrenka_kamuoliukus(1, 15);
-            int[] juodi = Atrenka_kamuoliukus(15, 30);
-            int[] raudoni = Atrenka_kamuoliukus(30, 76);
-            int[] geltoni = Atrenka_kamuoliukus(1, 76);
-            int[] zali = Atrenka_kamuoliukus(1, 76);
+            melyni = Atrenka_kamuoliukus(1, 15);
+            juodi = Atrenka_kamuoliukus(15, 30);
+            raudoni = Atrenka_kamuoliukus(30, 76);
+            geltoni = Atrenka_kamuoliukus(1, 76);
+            zali = Atrenka_kamuoliukus(1, 76);
 
             M1.Text = Convert.ToString(melyni[0]);
             M2.Text = Convert.ToString(melyni[1]);
@@ -56,7 +62,7 @@ namespace teleloto
             Z5.Text = Convert.ToString(zali[4]);
 
         }
-      
+
         /// <summary>
         /// Suranda 5 unikalius kamuoliukus tam tikruose reziuose
         /// </summary>
@@ -92,6 +98,157 @@ namespace teleloto
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonZaisti_Click(object sender, EventArgs e)
+        {
+            List<int> kamuoliukai = new List<int>();
+            Random rng = new Random();
+
+            int i = 0;
+
+            while (i < 50)
+            {
+                int temp = rng.Next(1, 76);
+                int flag = 0;
+                foreach (var k in kamuoliukai)
+                {
+                    if (k == temp)
+                    {
+                        flag++;
+                    }
+                }
+                if (flag == 0)
+                {
+                    kamuoliukai.Add(temp);
+                    i++;
+
+                    string jjjj = textBoxAtsakymas.Text;
+                    jjjj += " " + temp.ToString();
+                    textBoxAtsakymas.Text = jjjj;
+                    SuIntegravimas(temp);
+                    //buttonZaisti.Enabled = false;
+                }
+            }
+        }
+
+        private void SuIntegravimas(int istrauktas_kamuoliukas)
+        {
+            if (istrauktas_kamuoliukas < 16)
+            {
+                if (melyni[0] == istrauktas_kamuoliukas)
+                {
+                    M1.BackColor = Color.Green;
+                }
+                else if (melyni[1] == istrauktas_kamuoliukas)
+                {
+                    M2.BackColor = Color.Green;
+                }
+                else if (melyni[2] == istrauktas_kamuoliukas)
+                {
+                    M3.BackColor = Color.Green;
+                }
+                else if (melyni[3] == istrauktas_kamuoliukas)
+                {
+                    M4.BackColor = Color.Green;
+                }
+                else if (melyni[4] == istrauktas_kamuoliukas)
+                {
+                    M5.BackColor = Color.Green;
+                }
+            }
+            else if (istrauktas_kamuoliukas > 15 && istrauktas_kamuoliukas < 31)
+            {
+                if (juodi[0] == istrauktas_kamuoliukas)
+                {
+                    J1.BackColor = Color.Green;
+                }
+                else if (juodi[1] == istrauktas_kamuoliukas)
+                {
+                    J2.BackColor = Color.Green;
+                }
+                else if (juodi[2] == istrauktas_kamuoliukas)
+                {
+                    J3.BackColor = Color.Green;
+                }
+                else if (juodi[3] == istrauktas_kamuoliukas)
+                {
+                    J4.BackColor = Color.Green;
+                }
+                else if (juodi[4] == istrauktas_kamuoliukas)
+                {
+                    J5.BackColor = Color.Green;
+                }
+            }
+            else if (istrauktas_kamuoliukas > 30 && istrauktas_kamuoliukas < 46)
+            {
+                if (raudoni[0] == istrauktas_kamuoliukas)
+                {
+                    R1.BackColor = Color.Green;
+                }
+                else if (raudoni[1] == istrauktas_kamuoliukas)
+                {
+                    R2.BackColor = Color.Green;
+                }
+                else if (raudoni[2] == istrauktas_kamuoliukas)
+                {
+                    R3.BackColor = Color.Green;
+                }
+                else if (raudoni[3] == istrauktas_kamuoliukas)
+                {
+                    R4.BackColor = Color.Green;
+                }
+                else if (raudoni[4] == istrauktas_kamuoliukas)
+                {
+                    R5.BackColor = Color.Green;
+                }
+            }
+            else if (istrauktas_kamuoliukas > 45 && istrauktas_kamuoliukas < 61)
+            {
+                if (geltoni[0] == istrauktas_kamuoliukas)
+                {
+                    G1.BackColor = Color.Green;
+                }
+                else if (geltoni[1] == istrauktas_kamuoliukas)
+                {
+                    G2.BackColor = Color.Green;
+                }
+                else if (geltoni[2] == istrauktas_kamuoliukas)
+                {
+                    G3.BackColor = Color.Green;
+                }
+                else if (geltoni[3] == istrauktas_kamuoliukas)
+                {
+                    G4.BackColor = Color.Green;
+                }
+                else if (geltoni[4] == istrauktas_kamuoliukas)
+                {
+                    G5.BackColor = Color.Green;
+                }
+            }
+            else if (istrauktas_kamuoliukas > 60)
+            {
+                if (zali[0] == istrauktas_kamuoliukas)
+                {
+                    Z1.BackColor = Color.Green;
+                }
+                else if (zali[1] == istrauktas_kamuoliukas)
+                {
+                    Z2.BackColor = Color.Green;
+                }
+                else if (zali[2] == istrauktas_kamuoliukas)
+                {
+                    Z3.BackColor = Color.Green;
+                }
+                else if (zali[3] == istrauktas_kamuoliukas)
+                {
+                    Z4.BackColor = Color.Green;
+                }
+                else if (zali[4] == istrauktas_kamuoliukas)
+                {
+                    Z5.BackColor = Color.Green;
+                }
+            }
         }
     }
 }

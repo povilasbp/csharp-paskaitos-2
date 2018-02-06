@@ -287,6 +287,7 @@
             this.buttonZaisti.TabIndex = 2;
             this.buttonZaisti.Text = "Play";
             this.buttonZaisti.UseVisualStyleBackColor = true;
+            this.buttonZaisti.Click += new System.EventHandler(this.buttonZaisti_Click);
             // 
             // textBoxAtsakymas
             // 
