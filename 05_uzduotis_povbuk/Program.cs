@@ -66,8 +66,6 @@ namespace _05_uzduotis_povbuk
 
     class Program
     {
-
-
         public delegate bool IsChecker(int biudzetas, int darbuotojuSkaicius);
         static bool isPuodukas(int biudzetas, int darbuotojai)
         {
